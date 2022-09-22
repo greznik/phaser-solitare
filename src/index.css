@@ -18,80 +18,131 @@
  *
  * Modifications Copyright (c) 2022 Azur Games
  */
- * {
-    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+* {
+  -webkit-tap-highlight-color: rgba(
+    0,
+    0,
+    0,
+    0
+  ); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
 
 body {
-    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
-    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
-    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color: indigo;
-    background-image: url(assets/board/board.png); /* linear-gradient(to bottom, #A7A7A7 0%, #E4E4E4 51%); */
-    font-family: system-ui, -apple-system, -apple-system-font, 'Segoe UI', 'Roboto', sans-serif;
-    font-size:12px;
-    height:100vh;
-    margin:0px;
-    padding:0px;
-    overflow: hidden;
-    /* Padding to avoid the "unsafe" areas behind notches in the screen */
-    padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
-    text-transform:uppercase;
-    width:100%;
+  -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
+  -webkit-text-size-adjust: none; /* prevent webkit from resizing text to fit */
+  -webkit-user-select: none; /* prevent copy paste, to allow, change 'none' to 'text' */
+  background-color: indigo;
+  background-image: url(assets/board/board.png); /* linear-gradient(to bottom, #A7A7A7 0%, #E4E4E4 51%); */
+  font-family: system-ui, -apple-system, -apple-system-font, 'Segoe UI',
+    'Roboto', sans-serif;
+  font-size: 12px;
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+  /* Padding to avoid the "unsafe" areas behind notches in the screen */
+  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px)
+    env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+  text-transform: uppercase;
+  width: 100%;
+}
+.styled-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  z-index: 1000;
+  display: none;
+}
+.styled-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+  text-align: left;
+}
+.styled-table th {
+  width: 100%;
+}
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+}
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
 }
 
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
 
+.styled-table tbody tr:last-of-type {
+  border-bottom: 2px solid #009879;
+}
 .app {
-    background-size: contain;
-    object-fit: contain;
-    position:absolute;          
-    left:50%;
-    top:50%;
-    height:42;               
-    width:224px;                 
-    text-align:center;
-    margin:-21px 0px 0px -112px;
+  background-size: contain;
+  object-fit: contain;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 42;
+  width: 224px;
+  text-align: center;
+  margin: -21px 0px 0px -112px;
 }
 
 h1 {
-    font-size:24px;
-    font-weight:normal;
-    margin:0px;
-    overflow:visible;
-    padding:0px;
-    text-align:center;
-    color: white;
+  font-size: 24px;
+  font-weight: normal;
+  margin: 0px;
+  overflow: visible;
+  padding: 0px;
+  text-align: center;
+  color: white;
 }
 
 .event {
-    border-radius:4px;
-    color:#FFFFFF;
-    font-size:12px;
-    margin:0px 50px;
-    padding:2px 0px;
+  border-radius: 4px;
+  color: #ffffff;
+  font-size: 12px;
+  margin: 0px 50px;
+  padding: 2px 0px;
 }
 
 .event.listening {
-    background-color: indigo;
-    display:block;
+  background-color: indigo;
+  display: block;
 }
 
 .event.received {
-    background-color: darkorchid;
-    display:none;
+  background-color: darkorchid;
+  display: none;
 }
 
-#deviceready.ready .event.listening { display: none; }
-#deviceready.ready .event.received { display: block; }
+#deviceready.ready .event.listening {
+  display: none;
+}
+#deviceready.ready .event.received {
+  display: block;
+}
 
 @keyframes fade {
-    from { opacity: 1.0; }
-    50% { opacity: 0.4; }
-    to { opacity: 1.0; }
+  from {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .blink {
-    animation:fade 3000ms infinite;
-    -webkit-animation:fade 3000ms infinite;
+  animation: fade 3000ms infinite;
+  -webkit-animation: fade 3000ms infinite;
 }
-
